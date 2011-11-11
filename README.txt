@@ -12,5 +12,6 @@ To use, add a section to your ``~/.pypirc`` like so::
     gocept.special = download.gocept.com:/var/www/special-packages
 
 If the package being released starts with one of the keys in that section
-(longest match wins), you will be prompted whether to upload the egg (that was
-created by zest.releaser by checking out the tag) to the given server.
+(longest match wins, case insensitive), you will be prompted whether to upload
+the egg (that was created by zest.releaser by checking out the tag) to the
+given server.

@@ -29,7 +29,8 @@ def choose_destination(package, config):
         return None
     items = sorted(config.items(SECTION), key=lambda x: len(x[0]),
                    reverse=True)
+    package = package.lower()
     for prefix, destination in items:
-        if package.startswith(prefix):
+        if package.startswith(prefix.lower()):
             return destination
     return None

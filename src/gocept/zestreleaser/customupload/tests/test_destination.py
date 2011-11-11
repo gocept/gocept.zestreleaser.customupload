@@ -48,3 +48,10 @@ my = my.dest.is.much.longer
 my.special = special.dest
         """
         self.assertEqual('special.dest', self.choose('my.special', config))
+
+    def test_comparison_is_case_insensitive(self):
+        config = """
+[gocept.zestreleaser.customupload]
+my.package = my.dest
+        """
+        self.assertEqual('my.dest', self.choose('My.Package', config))
