@@ -4,6 +4,7 @@
 import ConfigParser
 import glob
 import os
+import urlparse
 import zest.releaser.utils
 
 
@@ -15,11 +16,18 @@ def upload(context):
         return
     sources = glob.glob(os.path.join(context['tagdir'], 'dist', '*'))
     arguments = get_call(sources, destination)
-    os.system(*arguments)
+    os.system(' '.join(arguments))
 
 
 def get_call(sources, destination):
-    return [' '.join(['scp'] + sources + [destination])]
+    if '://' not in destination:
+        destination = 'scp://' + destination.replace(':', '/', 1)
+    url = urlparse.urlsplit(destination)
+    if url[0] in ('scp', ''):
+        netloc, path = url[1], url[2]
+        assert path.startswith('/')
+        path = path[1:]
+        return ['scp'] + sources + ['%s:%s' % (netloc, path)]
 
 
 def read_configuration():
