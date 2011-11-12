@@ -14,7 +14,12 @@ def upload(context):
     if not zest.releaser.utils.ask('Upload to %s' % destination):
         return
     sources = glob.glob(os.path.join(context['tagdir'], 'dist', '*'))
-    os.system(' '.join(['scp'] + sources + [destination]))
+    arguments = get_call(sources, destination)
+    os.system(*arguments)
+
+
+def get_call(sources, destination):
+    return [' '.join(['scp'] + sources + [destination])]
 
 
 def read_configuration():
