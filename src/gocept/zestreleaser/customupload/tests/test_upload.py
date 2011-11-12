@@ -47,6 +47,27 @@ class UploadTest(unittest.TestCase):
             'scp /tmp/tha.example-0.1dev/dist/tha.example-0.1dev.tar.gz server')
 
 
+class ProtocollSeparatorTest(unittest.TestCase):
+
+    def get_call(self, destination):
+        return gocept.zestreleaser.customupload.upload.get_call(
+            ['source1', 'source2'], destination)
+
+    def test_no_protocol_should_use_scp(self):
+        self.assertEqual(
+            ['scp', 'source1', 'source2', 'localhost:/apath'],
+            self.get_call('localhost:/apath'))
+
+    def test_scp_should_use_scp(self):
+        self.assertEqual(
+            ['scp', 'source1', 'source2', 'localhost:apath'],
+            self.get_call('scp://localhost/apath'))
+
+    def test_scp_should_allow_absolute_path(self):
+        self.assertEqual(
+            ['scp', 'source1', 'source2', 'localhost:/apath'],
+            self.get_call('scp://localhost//apath'))
+
 class ConfigTest(unittest.TestCase):
 
     @mock.patch('os.path.expanduser')
