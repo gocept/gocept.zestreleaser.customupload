@@ -4,7 +4,7 @@ CHANGES
 1.0.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Allow uploading via HTTP PUT (WebDAV).
 
 
 1.0.3 (2011-11-11)

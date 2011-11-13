@@ -39,34 +39,62 @@ class UploadTest(unittest.TestCase):
     @mock.patch('os.system')
     @mock.patch('glob.glob')
     def test_call_scp(self, glob, system, ask, choose):
-        choose.return_value = 'server'
+        choose.return_value = 'server:'
         ask.return_value = True
         glob.return_value = ['/tmp/tha.example-0.1dev/dist/tha.example-0.1dev.tar.gz']
         gocept.zestreleaser.customupload.upload.upload(self.context)
         system.assert_called_with(
-            'scp /tmp/tha.example-0.1dev/dist/tha.example-0.1dev.tar.gz server')
+            'scp /tmp/tha.example-0.1dev/dist/tha.example-0.1dev.tar.gz server:')
 
 
 class ProtocollSeparatorTest(unittest.TestCase):
 
     def get_call(self, destination):
-        return gocept.zestreleaser.customupload.upload.get_call(
-            ['source1', 'source2'], destination)
+        return gocept.zestreleaser.customupload.upload.get_calls(
+            ['/path/to/source1', '/path/to/source2'], destination)
 
     def test_no_protocol_should_use_scp(self):
         self.assertEqual(
-            ['scp', 'source1', 'source2', 'localhost:/apath'],
+            [['scp', '/path/to/source1', '/path/to/source2',
+              'localhost:/apath']],
             self.get_call('localhost:/apath'))
 
     def test_scp_should_use_scp(self):
         self.assertEqual(
-            ['scp', 'source1', 'source2', 'localhost:apath'],
+            [['scp', '/path/to/source1', '/path/to/source2',
+              'localhost:apath']],
             self.get_call('scp://localhost/apath'))
 
     def test_scp_should_allow_absolute_path(self):
         self.assertEqual(
-            ['scp', 'source1', 'source2', 'localhost:/apath'],
+            [['scp', '/path/to/source1', '/path/to/source2',
+              'localhost:/apath']],
             self.get_call('scp://localhost//apath'))
+
+    def test_http_should_use_curl_and_put(self):
+        self.assertEqual(
+            [['curl', '-X', 'PUT', '--data-binary', '@/path/to/source1',
+              'http://localhost/apath/source1'],
+             ['curl', '-X', 'PUT', '--data-binary', '@/path/to/source2',
+              'http://localhost/apath/source2']],
+            self.get_call('http://localhost/apath'))
+
+    def test_https_should_use_curl_and_put(self):
+        self.assertEqual(
+            [['curl', '-X', 'PUT', '--data-binary', '@/path/to/source1',
+              'https://localhost/apath/source1'],
+             ['curl', '-X', 'PUT', '--data-binary', '@/path/to/source2',
+              'https://localhost/apath/source2']],
+            self.get_call('https://localhost/apath'))
+
+    def test_http_should_honour_trailing_slash(self):
+        self.assertEqual(
+            [['curl', '-X', 'PUT', '--data-binary', '@/path/to/source1',
+              'http://localhost/apath/source1'],
+             ['curl', '-X', 'PUT', '--data-binary', '@/path/to/source2',
+              'http://localhost/apath/source2']],
+            self.get_call('http://localhost/apath/'))
+
 
 class ConfigTest(unittest.TestCase):
 
