@@ -1,6 +1,6 @@
-===================
- Custom egg upload
-===================
+=================
+Custom egg upload
+=================
 
 This package provides a plugin for ``zest.releaser`` that offers to upload the
 released egg via SCP or HTTP PUT (WebDAV) to a custom location (instead of or
