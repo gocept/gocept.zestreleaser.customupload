@@ -1,5 +1,5 @@
-CHANGES
-=======
+Changelog
+=========
 
 1.1.1 (unreleased)
 ------------------
@@ -10,21 +10,21 @@ CHANGES
 1.1.0 (2011-11-18)
 ------------------
 
-- Allow uploading via HTTP PUT (WebDAV).
+- Allow uploading via HTTP PUT (WebDAV) [CZ].
 
 
 1.0.3 (2011-11-11)
 ------------------
 
-- Make matching package names case insensitive (bug reported by
-  maurits@vanrees.org).
+- Make matching package names case insensitive [bug reported by
+  maurits@vanrees.org].
 
 
 1.0.2 (2010-07-22)
 ------------------
 
 - Upload everything from the dist/ directory, so it works for any egg format,
-  .zip, .tar.gz, .egg, or else (suggestion by maurits@vanrees.org).
+  .zip, .tar.gz, .egg, or else [suggestion by maurits@vanrees.org].
 
 
 1.0.1 (2010-07-22)
@@ -36,4 +36,4 @@ CHANGES
 1.0 (2010-07-22)
 ----------------
 
-- first release.
+- first release [WS].
