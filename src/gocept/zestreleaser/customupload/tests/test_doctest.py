@@ -8,6 +8,7 @@ import zest.releaser.tests.functional
 def test_suite():
     return doctest.DocFileSuite(
         'integration.txt',
+        'integration-doc.txt',
         setUp=zest.releaser.tests.functional.setup,
         tearDown=zest.releaser.tests.functional.teardown,
         optionflags=(doctest.ELLIPSIS

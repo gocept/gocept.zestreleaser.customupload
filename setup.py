@@ -30,5 +30,6 @@ setup(
     ]),
     entry_points={
         'zest.releaser.releaser.after':
-            'upload=gocept.zestreleaser.customupload.upload:upload'},
+            ['upload=gocept.zestreleaser.customupload.upload:upload',
+            'upload_doc=gocept.zestreleaser.customupload.doc:upload']},
 )

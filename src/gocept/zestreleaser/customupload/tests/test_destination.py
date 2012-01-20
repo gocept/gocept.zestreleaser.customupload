@@ -13,7 +13,7 @@ class DestinationTest(unittest.TestCase):
         config = ConfigParser.ConfigParser()
         config.readfp(StringIO(config_text))
         return gocept.zestreleaser.customupload.upload.choose_destination(
-            package, config)
+            package, config, 'gocept.zestreleaser.customupload')
 
     def test_no_dest_defined(self):
         self.assertEqual(None, self.choose('my.package', ''))
