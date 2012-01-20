@@ -10,7 +10,9 @@ import zest.releaser.utils
 
 
 def upload(context):
-    destination = choose_destination(context['name'], read_configuration())
+    destination = choose_destination(
+        context['name'], read_configuration(),
+        'gocept.zestreleaser.customupload')
     if not destination:
         return
     if not zest.releaser.utils.ask('Upload to %s' % destination):
@@ -46,11 +48,10 @@ def read_configuration():
     return config
 
 
-def choose_destination(package, config):
-    SECTION = 'gocept.zestreleaser.customupload'
-    if SECTION not in config.sections():
+def choose_destination(package, config, section):
+    if section not in config.sections():
         return None
-    items = sorted(config.items(SECTION), key=lambda x: len(x[0]),
+    items = sorted(config.items(section), key=lambda x: len(x[0]),
                    reverse=True)
     package = package.lower()
     for prefix, destination in items:
