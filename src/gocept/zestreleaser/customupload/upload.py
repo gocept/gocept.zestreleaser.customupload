@@ -11,7 +11,7 @@ import zest.releaser.utils
 
 def upload(context):
     destination = choose_destination(
-        context['name'], read_configuration(),
+        context['name'], read_configuration('~/.pypirc'),
         'gocept.zestreleaser.customupload')
     if not destination:
         return
@@ -42,9 +42,9 @@ def get_calls(sources, destination):
     return result
 
 
-def read_configuration():
+def read_configuration(filename):
     config = ConfigParser.ConfigParser()
-    config.read(os.path.expanduser('~/.pypirc'))
+    config.read(os.path.expanduser(filename))
     return config
 
 

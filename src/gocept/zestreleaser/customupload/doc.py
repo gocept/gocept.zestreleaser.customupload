@@ -2,7 +2,7 @@
 # See also LICENSE.txt
 
 from gocept.zestreleaser.customupload.upload import choose_destination
-import ConfigParser
+from gocept.zestreleaser.customupload.upload import read_configuration
 import os
 import os.path
 import zest.releaser.utils
@@ -10,7 +10,7 @@ import zest.releaser.utils
 
 def upload(context):
     destination = choose_destination(
-        context['name'], read_configuration(),
+        context['name'], read_configuration('~/.zestreleaserrc'),
         'gocept.zestreleaser.customupload.doc')
     if not destination:
         return
@@ -26,9 +26,3 @@ def upload(context):
     os.system(' '.join(['ssh', host, 'mkdir', '-p', directory]))
     fullpath = '/'.join([destination, context['name'], context['version']])
     os.system(' '.join(['rsync', '-av', '--delete', source, fullpath]))
-
-
-def read_configuration():
-    config = ConfigParser.ConfigParser()
-    config.read(os.path.expanduser('~/.zestreleaserrc'))
-    return config
