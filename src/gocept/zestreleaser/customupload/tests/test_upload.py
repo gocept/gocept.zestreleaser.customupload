@@ -108,6 +108,12 @@ my.package = my.dest
 other.package = other.dest
 """)
         tmpfile.flush()
-        config = gocept.zestreleaser.customupload.upload.read_configuration()
+        config = gocept.zestreleaser.customupload.upload.read_configuration(
+            'mock')
         self.assertEqual('my.dest', config.get(
             'gocept.zestreleaser.customupload', 'my.package'))
+
+    def test_file_not_present_silently_ignores_it(self):
+        config = gocept.zestreleaser.customupload.upload.read_configuration(
+            'doesnotexist')
+        self.assertEqual([], config.sections())
