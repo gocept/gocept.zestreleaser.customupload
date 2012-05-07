@@ -9,7 +9,7 @@ in addition to PyPI).
 To use, add a section to your ``~/.pypirc`` like the following::
 
     [gocept.zestreleaser.customupload]
-    gocept = scp://download.gocept.com:/var/www/packages
+    gocept = scp://download.gocept.com//var/www/packages
     gocept.special = http://dav.gocept.com/special
 
 If the name of the package being released starts with one of the keys in that
