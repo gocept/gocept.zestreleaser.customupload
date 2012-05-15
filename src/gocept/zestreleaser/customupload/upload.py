@@ -39,6 +39,13 @@ def get_calls(sources, destination):
             result.append(
                 ['curl', '-X', 'PUT', '--data-binary', '@' + source,
                  '%s/%s' % (destination, os.path.basename(source))])
+    if url[0] in ('sftp', ):
+        netloc, path = url[1], url[2]
+        assert path.startswith('/')
+        for source in sources:
+            result.append(
+                ['echo', '"put %s"' % source, '|', 'sftp',
+                    '-b', '-', "%s:%s" % (netloc, path)])
     return result
 
 

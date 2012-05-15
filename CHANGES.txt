@@ -4,7 +4,7 @@ Changelog
 1.3 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Allow uploading via SFTP (patch by Godefroid Chapelle <gotcha@bubblenet.be>).
 
 
 1.2 (2012-01-20)

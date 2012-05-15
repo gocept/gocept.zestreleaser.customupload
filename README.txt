@@ -3,14 +3,15 @@ Custom egg upload
 =================
 
 This package provides a plugin for ``zest.releaser`` that offers to upload the
-released egg via SCP or HTTP PUT (WebDAV) to a custom location (instead of or
-in addition to PyPI).
+released egg via SCP, SFTP or HTTP PUT (WebDAV) to a custom location (instead
+of or in addition to PyPI).
 
 To use, add a section to your ``~/.pypirc`` like the following::
 
     [gocept.zestreleaser.customupload]
     gocept = scp://download.gocept.com:/var/www/packages
     gocept.special = http://dav.gocept.com/special
+    gocept.sftp = sftp://repo@repo.gocept.com/home/repo/eggs
 
 If the name of the package being released starts with one of the keys in that
 section (longest match wins, case insensitive), you will be prompted whether to
