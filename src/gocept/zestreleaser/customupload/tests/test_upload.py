@@ -95,6 +95,14 @@ class ProtocollSeparatorTest(unittest.TestCase):
               'http://localhost/apath/source2']],
             self.get_call('http://localhost/apath/'))
 
+    def test_sftp(self):
+        self.assertEqual(
+            [['echo', '"put /path/to/source1"', '|', 'sftp', '-b', '-',
+                'user@localhost://apath'],
+             ['echo', '"put /path/to/source2"', '|', 'sftp', '-b', '-',
+                 'user@localhost://apath']],
+             self.get_call('sftp://user@localhost//apath'))
+
 
 class ConfigTest(unittest.TestCase):
 
