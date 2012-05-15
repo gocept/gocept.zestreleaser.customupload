@@ -9,7 +9,7 @@ setup(
     version='1.3.dev0',
     author='Wolfgang Schnerring <ws at gocept dot com>, Christian Zagrodnick <cz at gocept dot com>',
     author_email='ws@gocept.com',
-    url='https://code.gocept.com/svn/gocept/gocept.zestreleaser.customupload',
+    url='https://code.gocept.com/hg/public/gocept.zestreleaser.customupload',
     description="Plugin for zest.releaser to allow uploading the created egg via SCP to configurable destinations.",
     long_description=(
         open('README.txt').read()

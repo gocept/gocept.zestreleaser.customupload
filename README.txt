@@ -41,9 +41,9 @@ example, the upload location would be ``/var/www/doc/gocept.foo/1.3``.
 Development
 ===========
 
-The source code is available in the subversion repository at
-https://code.gocept.com/svn/gocept/gocept.zestreleaser.customupload
+The source code is available in the Mercurial repository at
+https://code.gocept.com/hg/public/gocept.zestreleaser.customupload
 
 Please report any bugs you find at
-https://projects.gocept.com/projects/projects/gocept-testing/issues
+https://projects.gocept.com/projects/zestreleaser-customupload
 
