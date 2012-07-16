@@ -10,7 +10,7 @@ Changelog
 1.2.1 (2012-05-07)
 ------------------
 
-- Fixed documentation of SFTP upload configuration.
+- Fixed documentation of SCP upload configuration.
 
 
 1.2 (2012-01-20)
