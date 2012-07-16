@@ -44,5 +44,5 @@ The source code is available in the subversion repository at
 https://code.gocept.com/svn/gocept/gocept.zestreleaser.customupload
 
 Please report any bugs you find at
-https://projects.gocept.com/projects/projects/gocept-testing/issues
+https://projects.gocept.com/projects/gocept-testing/issues
 
