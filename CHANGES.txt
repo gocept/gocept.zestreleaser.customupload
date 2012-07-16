@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.4.1 (unreleased)
-------------------
+1.4.0.dev2 (2012-07-16)
+-----------------------
 
 - If the destination URL contains username and password, do not display the
   password on the console when asking for upload.
