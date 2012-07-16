@@ -24,8 +24,13 @@ def upload(context):
 
 def get_calls(sources, destination):
     result = []
+    options = []
     if '://' not in destination:
         destination = 'scp://' + destination.replace(':', '/', 1)
+    if ' ' in destination:
+        parts = destination.split(' ')
+        destination = parts[-1]
+        options = parts[:-1]
     url = urlparse.urlsplit(destination)
     if url[0] in ('scp', ''):
         netloc, path = url[1], url[2]
@@ -35,10 +40,15 @@ def get_calls(sources, destination):
     if url[0] in ('http', 'https'):
         if destination.endswith('/'):
             destination = destination[:-1]
+        default_params = ['curl']
+        default_params.extend(options)
+        default_params.extend(['-X', 'PUT', '--data-binary'])
+        default_params = tuple(default_params)
         for source in sources:
+            source_name = os.path.basename(source)
             result.append(
-                ['curl', '-X', 'PUT', '--data-binary', '@' + source,
-                 '%s/%s' % (destination, os.path.basename(source))])
+                list(default_params +
+                     ('@' + source, '%s/%s' % (destination, source_name))))
     return result
 
 
