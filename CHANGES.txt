@@ -4,7 +4,7 @@ Changelog
 1.2.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Allow options in HTTP(S) PUT (WebDAV) upload.
 
 
 1.2.1 (2012-05-07)
