@@ -11,7 +11,7 @@ We need to mock getting the configuration, since the real version reads from
 >>> import os
 >>> open(os.path.join(svnsourcedir, '.pypirc'), 'w').write("""
 ... [gocept.zestreleaser.customupload]
-... tha.example = example.com:/var/www
+... tha.example = http://user:pass@example.com:/var/www
 ... """)
 >>> def fake_expanduser(path):
 ...     return path.replace('~', svnsourcedir)
@@ -31,5 +31,5 @@ Our reply: y
 ...
 running sdist
 ...
-Question: Upload to example.com:/var/www (Y/n)?
+Question: Upload to http://user:<passwd>@example.com:/var/www (Y/n)?
 Our reply: n

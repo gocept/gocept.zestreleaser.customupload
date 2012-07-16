@@ -4,8 +4,10 @@ Changelog
 1.4.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- If the destination URL contains username and password, do not display the
+  password on the console when asking for upload.
 
+- Added some trove classifiers to indicate suported Python versions.
 
 1.4.0.dev1 (2012-07-16)
 -----------------------
