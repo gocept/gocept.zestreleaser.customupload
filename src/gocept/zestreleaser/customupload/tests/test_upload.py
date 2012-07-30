@@ -95,13 +95,21 @@ class ProtocollSeparatorTest(unittest.TestCase):
               'http://localhost/apath/source2']],
             self.get_call('http://localhost/apath/'))
 
+    def test_https_should_add_additional_options_to_curl(self):
+        self.assertEqual(
+            [['curl', '--insecure', '-X', 'PUT', '--data-binary',
+              '@/path/to/source1', 'http://localhost/apath/source1'],
+             ['curl', '--insecure', '-X', 'PUT', '--data-binary',
+              '@/path/to/source2', 'http://localhost/apath/source2']],
+            self.get_call('--insecure http://localhost/apath/'))
+
     def test_sftp(self):
         self.assertEqual(
             [['echo', '"put /path/to/source1"', '|', 'sftp', '-b', '-',
-                'user@localhost://apath'],
+              'user@localhost://apath'],
              ['echo', '"put /path/to/source2"', '|', 'sftp', '-b', '-',
-                 'user@localhost://apath']],
-             self.get_call('sftp://user@localhost//apath'))
+              'user@localhost://apath']],
+            self.get_call('sftp://user@localhost//apath'))
 
 
 class ConfigTest(unittest.TestCase):
