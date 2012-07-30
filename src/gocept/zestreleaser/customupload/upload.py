@@ -9,13 +9,27 @@ import urlparse
 import zest.releaser.utils
 
 
+def split_destination(destination):
+    """Returns list of options and destination."""
+    parts = destination.split()
+    options = parts[:-1]
+    destination = parts[-1]
+    if '://' not in destination:
+        destination = 'scp://' + destination.replace(':', '/', 1)
+    return options, destination
+
+
 def upload(context):
     destination = choose_destination(
         context['name'], read_configuration('~/.pypirc'),
         'gocept.zestreleaser.customupload')
     if not destination:
         return
-    if not zest.releaser.utils.ask('Upload to %s' % destination):
+    url = urlparse.urlsplit(split_destination(destination)[1])
+    if url.password:
+        url = url[0:1] + (url[1].replace(url.password, '<passwd>'),) + url[2:]
+    target_url = urlparse.urlunsplit(url)
+    if not zest.releaser.utils.ask('Upload to %s' % target_url):
         return
     sources = glob.glob(os.path.join(context['tagdir'], 'dist', '*'))
     for call in get_calls(sources, destination):
@@ -24,8 +38,7 @@ def upload(context):
 
 def get_calls(sources, destination):
     result = []
-    if '://' not in destination:
-        destination = 'scp://' + destination.replace(':', '/', 1)
+    options, destination = split_destination(destination)
     url = urlparse.urlsplit(destination)
     if url[0] in ('scp', ''):
         netloc, path = url[1], url[2]
@@ -35,10 +48,15 @@ def get_calls(sources, destination):
     if url[0] in ('http', 'https'):
         if destination.endswith('/'):
             destination = destination[:-1]
+        default_params = ['curl']
+        default_params.extend(options)
+        default_params.extend(['-X', 'PUT', '--data-binary'])
+        default_params = tuple(default_params)
         for source in sources:
+            source_name = os.path.basename(source)
             result.append(
-                ['curl', '-X', 'PUT', '--data-binary', '@' + source,
-                 '%s/%s' % (destination, os.path.basename(source))])
+                list(default_params +
+                     ('@' + source, '%s/%s' % (destination, source_name))))
     if url[0] in ('sftp', ):
         netloc, path = url[1], url[2]
         assert path.startswith('/')
