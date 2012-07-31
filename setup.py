@@ -6,7 +6,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='gocept.zestreleaser.customupload',
-    version='1.4.1.dev0',
+    version='1.4',
     author='Wolfgang Schnerring <ws at gocept dot com>, Christian Zagrodnick <cz at gocept dot com>',
     author_email='ws@gocept.com',
     url='https://code.gocept.com/hg/public/gocept.zestreleaser.customupload',
