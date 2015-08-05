@@ -37,7 +37,7 @@ setup(
         'Topic :: System :: Archiving :: Packaging',
         'Topic :: System :: Installation/Setup',
         'Topic :: Utilities',
-        ],
+    ],
     packages=find_packages('src'),
     package_dir={'': 'src'},
     include_package_data=True,
@@ -54,5 +54,5 @@ setup(
     entry_points={
         'zest.releaser.releaser.after':
             ['upload=gocept.zestreleaser.customupload.upload:upload',
-            'upload_doc=gocept.zestreleaser.customupload.doc:upload']},
+             'upload_doc=gocept.zestreleaser.customupload.doc:upload']},
 )
