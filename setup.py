@@ -1,4 +1,3 @@
-# Copyright (c) 2010 gocept gmbh & co. kg
 # See also LICENSE.txt
 
 from setuptools import setup, find_packages
@@ -7,12 +6,14 @@ from setuptools import setup, find_packages
 setup(
     name='gocept.zestreleaser.customupload',
     version='1.5.dev0',
-    author='Wolfgang Schnerring <ws at gocept dot com>, Christian Zagrodnick <cz at gocept dot com>',
-    author_email='ws@gocept.com',
+    author='gocept gmbh & co. kg',
+    author_email='mail@gocept.com',
     url='https://bitbucket.org/gocept/gocept.zestreleaser.customupload',
     description="Plugin for zest.releaser to allow uploading the created egg via SCP to configurable destinations.",
     long_description=(
-        open('README.txt').read()
+        open('COPYRIGHT.txt').read()
+        + '\n\n'
+        + open('README.txt').read()
         + '\n\n'
         + open('CHANGES.txt').read()),
     classifiers=[
