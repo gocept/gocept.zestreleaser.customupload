@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.0 (unreleased)
+2.0 (2015-11-18)
 ----------------
 
 - Move repos to https://bitbucket.org/gocept/gocept.zestreleaser.customupload
