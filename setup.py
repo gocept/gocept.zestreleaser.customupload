@@ -46,7 +46,7 @@ setup(
     namespace_packages=['gocept', 'gocept.zestreleaser'],
     install_requires=[
         'setuptools',
-        'zest.releaser>=3.12',
+        'zest.releaser>=3.51',
     ],
     extras_require=dict(test=[
         'mock',
