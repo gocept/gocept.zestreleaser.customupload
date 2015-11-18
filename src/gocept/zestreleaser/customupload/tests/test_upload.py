@@ -118,11 +118,11 @@ class ConfigTest(unittest.TestCase):
     def test_returns_configparser(self, expanduser):
         tmpfile = tempfile.NamedTemporaryFile()
         expanduser.return_value = tmpfile.name
-        tmpfile.write("""
+        tmpfile.write(u"""
 [gocept.zestreleaser.customupload]
 my.package = my.dest
 other.package = other.dest
-""")
+""".encode('ascii'))
         tmpfile.flush()
         config = gocept.zestreleaser.customupload.upload.read_configuration(
             'mock')

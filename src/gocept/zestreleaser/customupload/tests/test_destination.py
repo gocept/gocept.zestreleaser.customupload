@@ -1,8 +1,5 @@
-# Copyright (c) 2010 gocept gmbh & co. kg
-# See also LICENSE.txt
-
-from StringIO import StringIO
-import ConfigParser
+from six import StringIO
+from six.moves import configparser
 import gocept.zestreleaser.customupload.upload
 import unittest
 
@@ -10,7 +7,7 @@ import unittest
 class DestinationTest(unittest.TestCase):
 
     def choose(self, package, config_text):
-        config = ConfigParser.ConfigParser()
+        config = configparser.ConfigParser()
         config.readfp(StringIO(config_text))
         return gocept.zestreleaser.customupload.upload.choose_destination(
             package, config, 'gocept.zestreleaser.customupload')

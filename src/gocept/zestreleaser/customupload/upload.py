@@ -1,11 +1,7 @@
-# Copyright (c) 2010 gocept gmbh & co. kg
-# See also LICENSE.txt
-
-import ConfigParser
+from six.moves import configparser, urllib
 import glob
 import os
 import os.path
-import urlparse
 import zest.releaser.utils
 
 
@@ -25,10 +21,10 @@ def upload(context):
         'gocept.zestreleaser.customupload')
     if not destination:
         return
-    url = urlparse.urlsplit(split_destination(destination)[1])
+    url = urllib.parse.urlsplit(split_destination(destination)[1])
     if url.password:
         url = url[0:1] + (url[1].replace(url.password, '<passwd>'),) + url[2:]
-    target_url = urlparse.urlunsplit(url)
+    target_url = urllib.parse.urlunsplit(url)
     if not zest.releaser.utils.ask('Upload to %s' % target_url):
         return
     sources = glob.glob(os.path.join(context['tagdir'], 'dist', '*'))
@@ -39,7 +35,7 @@ def upload(context):
 def get_calls(sources, destination):
     result = []
     options, destination = split_destination(destination)
-    url = urlparse.urlsplit(destination)
+    url = urllib.parse.urlsplit(destination)
     if url[0] in ('scp', ''):
         netloc, path = url[1], url[2]
         assert path.startswith('/')
@@ -68,7 +64,7 @@ def get_calls(sources, destination):
 
 
 def read_configuration(filename):
-    config = ConfigParser.ConfigParser()
+    config = configparser.ConfigParser()
     config.read(os.path.expanduser(filename))
     return config
 

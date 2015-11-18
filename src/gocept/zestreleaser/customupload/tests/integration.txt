@@ -9,7 +9,7 @@ We need to mock getting the configuration, since the real version reads from
 ``~/.pypirc``:
 
 >>> import os
->>> open(os.path.join(svnsourcedir, '.pypirc'), 'w').write("""
+>>> _ = open(os.path.join(svnsourcedir, '.pypirc'), 'w').write("""
 ... [gocept.zestreleaser.customupload]
 ... tha.example = http://user:pass@example.com:/var/www
 ... """)
