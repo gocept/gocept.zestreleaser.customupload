@@ -2,6 +2,8 @@
 
 from setuptools import setup, find_packages
 
+description = ("Plug-in for zest.releaser to allow uploading the created egg "
+               "via SCP to configurable destinations.")
 
 setup(
     name='gocept.zestreleaser.customupload',
@@ -9,13 +11,10 @@ setup(
     author='gocept gmbh & co. kg',
     author_email='mail@gocept.com',
     url='https://bitbucket.org/gocept/gocept.zestreleaser.customupload',
-    description="Plugin for zest.releaser to allow uploading the created egg via SCP to configurable destinations.",
-    long_description=(
-        open('COPYRIGHT.txt').read()
-        + '\n\n'
-        + open('README.txt').read()
-        + '\n\n'
-        + open('CHANGES.txt').read()),
+    description=description,
+    long_description="\n\n".join([open('COPYRIGHT.txt').read(),
+                                  open('README.rst').read(),
+                                  open('CHANGES.rst').read()]),
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Console',
