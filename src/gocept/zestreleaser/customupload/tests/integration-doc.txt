@@ -17,7 +17,7 @@ We check this by observing the user-visible output.
 >>> import zest.releaser.release
 >>> import zest.releaser.utils
 >>> zest.releaser.utils.TESTMODE = True
->>> zest.releaser.utils.answers_for_testing = ['y', 'y', 'n', 'no', 'n']
+>>> zest.releaser.utils.test_answer_book.set_answers(['y', 'y', 'n', 'no', 'n'])
 >>> os.chdir(svnsourcedir)
 >>> with mock.patch('os.path.expanduser', new=fake_expanduser):
 ...     zest.releaser.release.main()
