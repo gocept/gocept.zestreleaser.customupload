@@ -11,6 +11,6 @@ def test_suite():
         'integration-doc.txt',
         setUp=zest.releaser.tests.functional.setup,
         tearDown=zest.releaser.tests.functional.teardown,
-        optionflags=(doctest.ELLIPSIS
-                     + doctest.NORMALIZE_WHITESPACE
-                     + doctest.REPORT_NDIFF))
+        optionflags=(doctest.ELLIPSIS +
+                     doctest.NORMALIZE_WHITESPACE +
+                     doctest.REPORT_NDIFF))

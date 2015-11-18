@@ -15,7 +15,7 @@ class UploadTest(unittest.TestCase):
         'version': '0.1dev',
         'workingdir': '/tmp/tha.example-svn',
         'name': 'tha.example',
-        }
+    }
 
     @mock.patch('gocept.zestreleaser.customupload.upload.choose_destination')
     @mock.patch('zest.releaser.utils.ask')
@@ -41,10 +41,12 @@ class UploadTest(unittest.TestCase):
     def test_call_scp(self, glob, system, ask, choose):
         choose.return_value = 'server:'
         ask.return_value = True
-        glob.return_value = ['/tmp/tha.example-0.1dev/dist/tha.example-0.1dev.tar.gz']
+        glob.return_value = [
+            '/tmp/tha.example-0.1dev/dist/tha.example-0.1dev.tar.gz']
         gocept.zestreleaser.customupload.upload.upload(self.context)
         system.assert_called_with(
-            'scp /tmp/tha.example-0.1dev/dist/tha.example-0.1dev.tar.gz server:')
+            'scp /tmp/tha.example-0.1dev/dist/tha.example-0.1dev.tar.gz '
+            'server:')
 
 
 class ProtocollSeparatorTest(unittest.TestCase):
