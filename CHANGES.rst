@@ -8,7 +8,8 @@ Changelog
 
 - Make tests compatible to ``zest.releaser >= 3.51``.
 
-- Claim Python 3.3 to 3.5 support, thus requiring ``zest.releaser >= 5.0``.
+- Claim Python 3.3 to 3.5 and PyPy support, thus requiring
+  ``zest.releaser >= 5.0``.
 
 - Drop Python 2.5 support.
 
