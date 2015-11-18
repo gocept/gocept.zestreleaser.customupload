@@ -6,7 +6,7 @@ We register an entrypoint that zest.releaser calls.
 We check this by observing the user-visible output.
 
 >>> import os
->>> open(os.path.join(svnsourcedir, '.zestreleaserrc'), 'w').write("""
+>>> _ = open(os.path.join(svnsourcedir, '.zestreleaserrc'), 'w').write("""
 ... [gocept.zestreleaser.customupload.doc]
 ... tha.example = example.com:/var/www
 ... """)

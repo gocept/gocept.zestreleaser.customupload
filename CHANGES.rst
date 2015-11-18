@@ -1,13 +1,16 @@
 Changelog
 =========
 
-1.5 (unreleased)
+2.0 (unreleased)
 ----------------
 
 - Move repos to https://bitbucket.org/gocept/gocept.zestreleaser.customupload
 
 - Make tests compatible to ``zest.releaser >= 3.51``.
 
+- Claim Python 3.3 to 3.5 support, thus requiring ``zest.releaser >= 5.0``.
+
+- Drop Python 2.5 support.
 
 1.4 (2012-07-31)
 ----------------
