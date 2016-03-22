@@ -4,7 +4,9 @@ Changelog
 2.1 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Claim PyPy3 support.
+
+- Drop Python 2.6 support.
 
 
 2.0 (2015-11-18)
