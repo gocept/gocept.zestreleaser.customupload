@@ -7,7 +7,7 @@ description = ("Plug-in for zest.releaser to allow uploading the created egg "
 
 setup(
     name='gocept.zestreleaser.customupload',
-    version='2.1.dev0',
+    version='3.0.dev0',
     author='gocept gmbh & co. kg',
     author_email='mail@gocept.com',
     url='https://bitbucket.org/gocept/gocept.zestreleaser.customupload',
@@ -25,10 +25,8 @@ setup(
         'Natural Language :: English',
         'Operating System :: OS Independent',
         'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
