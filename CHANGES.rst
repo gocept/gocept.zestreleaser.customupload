@@ -4,6 +4,9 @@ Changelog
 2.1 (unreleased)
 ----------------
 
+- Support non-default port numbers for scp and sftp
+  [erral]
+
 - Claim PyPy3 support.
 
 - Drop Python 2.6 support.

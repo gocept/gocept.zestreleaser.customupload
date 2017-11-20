@@ -18,6 +18,16 @@ section (longest match wins, case insensitive), you will be prompted whether to
 upload the egg (that was created by zest.releaser by checking out the tag) to
 the given server.
 
+If the server is using non-standard ports for scp or sftp (the standard port is
+22 in both cases), you can signal it including the port in the server url, as follows::
+
+    [gocept.zestreleaser.customupload]
+    gocept.scp = scp://download.gocept.com:6522//var/www/packages
+    gocept.sftp = sftp://repo@repo.gocept.com:7522/home/repo/eggs
+
+In the first case, the scp will be done to the port 6522 instead to the standard 22
+and in the second case the sftp will connect to port 7522 instead to 22
+
 Options for HTTP(S) PUT (WebDAV)
 ================================
 
