@@ -3,7 +3,7 @@
 from setuptools import setup, find_packages
 
 description = ("Plug-in for zest.releaser to allow uploading the created egg "
-               "via SCP to configurable destinations.")
+               "via SCP or SFTP to configurable destinations.")
 
 setup(
     name='gocept.zestreleaser.customupload',
