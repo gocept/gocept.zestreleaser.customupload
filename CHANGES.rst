@@ -1,7 +1,7 @@
 Changelog
 =========
 
-3.0 (unreleased)
+3.0 (2017-11-20)
 ----------------
 
 - Support non-default port numbers for scp and sftp
