@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.1 (unreleased)
+3.0 (unreleased)
 ----------------
 
 - Support non-default port numbers for scp and sftp
@@ -9,7 +9,7 @@ Changelog
 
 - Claim support for Python 3.6 and PyPy3.
 
-- Drop Python 2.6 support.
+- Drop support for Python 2.6 and 3.3.
 
 
 2.0 (2015-11-18)
