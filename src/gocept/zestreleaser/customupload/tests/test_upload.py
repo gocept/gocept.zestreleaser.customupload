@@ -45,7 +45,7 @@ class UploadTest(unittest.TestCase):
             '/tmp/tha.example-0.1dev/dist/tha.example-0.1dev.tar.gz']
         gocept.zestreleaser.customupload.upload.upload(self.context)
         system.assert_called_with(
-            'scp /tmp/tha.example-0.1dev/dist/tha.example-0.1dev.tar.gz '
+            'scp -P 22 /tmp/tha.example-0.1dev/dist/tha.example-0.1dev.tar.gz '
             'server:')
 
 
@@ -57,21 +57,27 @@ class ProtocollSeparatorTest(unittest.TestCase):
 
     def test_no_protocol_should_use_scp(self):
         self.assertEqual(
-            [['scp', '/path/to/source1', '/path/to/source2',
+            [['scp', '-P 22', '/path/to/source1', '/path/to/source2',
               'localhost:/apath']],
             self.get_call('localhost:/apath'))
 
     def test_scp_should_use_scp(self):
         self.assertEqual(
-            [['scp', '/path/to/source1', '/path/to/source2',
+            [['scp', '-P 22', '/path/to/source1', '/path/to/source2',
               'localhost:apath']],
             self.get_call('scp://localhost/apath'))
 
     def test_scp_should_allow_absolute_path(self):
         self.assertEqual(
-            [['scp', '/path/to/source1', '/path/to/source2',
+            [['scp', '-P 22', '/path/to/source1', '/path/to/source2',
               'localhost:/apath']],
             self.get_call('scp://localhost//apath'))
+
+    def test_scp_with_different_port(self):
+        self.assertEqual(
+            [['scp', '-P 7569', '/path/to/source1', '/path/to/source2',
+              'localhost:/apath']],
+            self.get_call('scp://localhost:7569//apath'))
 
     def test_http_should_use_curl_and_put(self):
         self.assertEqual(
@@ -107,11 +113,19 @@ class ProtocollSeparatorTest(unittest.TestCase):
 
     def test_sftp(self):
         self.assertEqual(
-            [['echo', '"put /path/to/source1"', '|', 'sftp', '-b', '-',
-              'user@localhost://apath'],
-             ['echo', '"put /path/to/source2"', '|', 'sftp', '-b', '-',
-              'user@localhost://apath']],
+            [['echo', '"put /path/to/source1"', '|', 'sftp', '-P 22',
+              '-b', '-', 'user@localhost://apath'],
+             ['echo', '"put /path/to/source2"', '|', 'sftp', '-P 22',
+              '-b', '-', 'user@localhost://apath']],
             self.get_call('sftp://user@localhost//apath'))
+
+    def test_sftp_with_different_port(self):
+        self.assertEqual(
+            [['echo', '"put /path/to/source1"', '|', 'sftp', '-P 7596',
+              '-b', '-', 'user@localhost://apath'],
+             ['echo', '"put /path/to/source2"', '|', 'sftp', '-P 7596',
+              '-b', '-', 'user@localhost://apath']],
+            self.get_call('sftp://user@localhost:7596//apath'))
 
 
 class ConfigTest(unittest.TestCase):

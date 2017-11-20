@@ -39,8 +39,12 @@ def get_calls(sources, destination):
     if url[0] in ('scp', ''):
         netloc, path = url[1], url[2]
         assert path.startswith('/')
+        port = '22'
+        if netloc.find(':') != -1:
+            netloc, port = netloc.split(':')
         path = path[1:]
-        result.append(['scp'] + sources + ['%s:%s' % (netloc, path)])
+        result.append(['scp'] + ['-P %s' % port] + sources +
+                      ['%s:%s' % (netloc, path)])
     if url[0] in ('http', 'https'):
         if destination.endswith('/'):
             destination = destination[:-1]
@@ -56,10 +60,14 @@ def get_calls(sources, destination):
     if url[0] in ('sftp', ):
         netloc, path = url[1], url[2]
         assert path.startswith('/')
+        port = '22'
+        if netloc.find(':') != -1:
+            netloc, port = netloc.split(':')
+
         for source in sources:
             result.append(
                 ['echo', '"put %s"' % source, '|', 'sftp',
-                    '-b', '-', "%s:%s" % (netloc, path)])
+                    '-P %s' % port, '-b', '-', "%s:%s" % (netloc, path)])
     return result
 
 
