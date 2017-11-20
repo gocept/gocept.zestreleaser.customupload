@@ -7,7 +7,7 @@ Changelog
 - Support non-default port numbers for scp and sftp
   [erral]
 
-- Claim PyPy3 support.
+- Claim support for Python 3.6 and PyPy3.
 
 - Drop Python 2.6 support.
 
