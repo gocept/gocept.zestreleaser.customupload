@@ -1,0 +1,15 @@
+language: python
+dist: xenial
+python:
+  - 2.7
+  - 3.6
+  - PyPy
+  - CPython
+install: pip install tox-travis
+script: tox
+after_success: 
+cache:
+  pip: true
+notifications:
+  webhooks:
+    secure: uD+6t4ovCFxr1RuatmuifDD8efkW7QV6yOFYEku+BUFzey6w35rjLXsA1Myk/F4puxluqGz+YJPeL7QZGY4cubymYpSApEFSeHVN23oXIN6O6dCP7XMcpvvdQXdD+HxCUukvm+6Xf1SG88aj3xfw3Fhugfbp9ajxMKY7spe+B7o0dOOnJIQdjAsNgTKZ3529zFmkQsrNt6Sqe6rokzYCmkxyPR8RG0Vrm6Zwaud+u/sD3J2RpdVzv0QNFHEAa4pOMI87KnzMC+W4wOrKd5FI6LWeVGFTH/vkzu/BSiU5GrJimHGUIaIwW70lc7HMDaGiRFxl8xMdmbTlEDU1/YDy/u9gqOJs27Apq67l/ccQRVDA+zM+zjFvtmR3/wmrtomtnomzarSvEiKxWIRfSAQsX7CIGMkWCB0NVJz5Dis3G3Zh/hwI1eYposQxm19UPaHtwmj2b8DvKj100FRw27KVMesMzbYYuZVQMr5KL94E7U3BpjHR0ME4T1VDPT3KlFYocnHmnysx/AEAbReZTxYj6Xlrt9iv8S79CPc9EzG5euo9sByyhLajUdsGOQ5TWePPr+xyD+uTkvJhlvxea9wOt/Knl+AYNlbw9GhXMt0u3YTgF5wLI6WtPCzb5XjAUEOWdTEF9sFvHmVR0ghbOTMu7wHMXBXJvzoGd5OArSx7Xmg=

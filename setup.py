@@ -10,7 +10,7 @@ setup(
     version='3.1.dev0',
     author='gocept gmbh & co. kg',
     author_email='mail@gocept.com',
-    url='https://bitbucket.org/gocept/gocept.zestreleaser.customupload',
+    url='https://github.com/gocept/gocept.zestreleaser.customupload',
     description=description,
     long_description="\n\n".join([open('COPYRIGHT.txt').read(),
                                   open('README.rst').read(),

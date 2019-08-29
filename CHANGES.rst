@@ -6,6 +6,8 @@ Changelog
 
 - Nothing changed yet.
 
+- Migrate to Github.
+
 
 3.0 (2017-11-20)
 ----------------
