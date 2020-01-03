@@ -5,7 +5,6 @@ source = gocept.zestreleaser.customupload
 [report]
 precision = 2
 omit = */interfaces.py
-       */test_*.py
 
 [html]
 directory = coverage-report

@@ -3,9 +3,15 @@ dist: xenial
 python:
   - 2.7
   - 3.6
-install: pip install tox-travis
+  - 3.7
+  - 3.8
+  - pypy
+  - pypy3
+install: pip install tox-travis coveralls
 script: tox
-after_success: 
+after_success:
+  - coverage combine
+  - coveralls
 cache:
   pip: true
 notifications:
