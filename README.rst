@@ -62,7 +62,7 @@ Development
 ===========
 
 The source code is available in the Mercurial repository at
-https://bitbucket.org/gocept/gocept.zestreleaser.customupload
+https://github.com/gocept/gocept.zestreleaser.customupload
 
 Please report any bugs you find at
-https://bitbucket.org/gocept/gocept.zestreleaser.customupload/issues
+https://github.com/gocept/gocept.zestreleaser.customupload/issues

@@ -4,9 +4,12 @@ Changelog
 3.1 (unreleased)
 ----------------
 
-- Nothing changed yet.
-
 - Migrate to Github.
+
+- Test for Python 3.7 and 3.8.
+
+- Stop testing for Python 3.4 and 3.5.
+
 
 
 3.0 (2017-11-20)
