@@ -4,12 +4,13 @@ Changelog
 3.1 (unreleased)
 ----------------
 
-- Migrate to Github.
+- Migrate to GitHub.
 
 - Test for Python 3.7 and 3.8.
 
 - Stop testing for Python 3.4 and 3.5.
 
+- Use GitHub actions as CI.
 
 
 3.0 (2017-11-20)
