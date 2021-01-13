@@ -4,6 +4,7 @@ source = gocept.zestreleaser.customupload
 
 [report]
 precision = 2
+fail_under = 87
 
 [html]
 directory = coverage-report
