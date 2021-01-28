@@ -1,4 +1,5 @@
-from six.moves import configparser, urllib
+from six.moves import configparser
+from six.moves import urllib
 import glob
 import os
 import os.path

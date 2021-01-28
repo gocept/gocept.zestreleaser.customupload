@@ -1,3 +1,4 @@
+from six import PY2
 from six import StringIO
 from six.moves import configparser
 import gocept.zestreleaser.customupload.upload
@@ -8,7 +9,10 @@ class DestinationTest(unittest.TestCase):
 
     def choose(self, package, config_text):
         config = configparser.ConfigParser()
-        config.readfp(StringIO(config_text))
+        if PY2:  # pragma: nocover
+            config.readfp(StringIO(config_text))
+        else:
+            config.read_file(StringIO(config_text))
         return gocept.zestreleaser.customupload.upload.choose_destination(
             package, config, 'gocept.zestreleaser.customupload')
 

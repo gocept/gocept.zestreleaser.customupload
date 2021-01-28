@@ -1,6 +1,8 @@
 # See also LICENSE.txt
 
-from setuptools import setup, find_packages
+from setuptools import find_packages
+from setuptools import setup
+
 
 description = ("Plug-in for zest.releaser to allow uploading the created egg "
                "via SCP or SFTP to configurable destinations.")
